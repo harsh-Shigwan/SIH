@@ -1,27 +1,28 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { View, Text } from 'react-native'
 import React from 'react'
-import {Link} from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
+import Home1 from './patient/home/Home1'
+import Home2 from './patient/home/Home2'
+import Home3 from './patient/home/Home3'
+import AdminTabNavigation from './admin/AdminTabNavigation'
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { NavigationIndependentTree } from '@react-navigation/native'
 
 const index = () => {
+  const stack = createNativeStackNavigator();
   return (
-    <View className="flex-1 items-center justify-center max-h-screen">
-      <Text className="color-red-400 text-3xl">index</Text>
-      <StatusBar style="auto"/>
-      <Link href="/About">
-        <Text>Go to About</Text>
-      </Link>
-      <Link href="/patient/home">
-       <Text>Go to Patient Home</Text>
-      </Link>
-      <Link href="/patient/PatientOnboarding">
-       <Text>Go to Patient Onboarding</Text>
-      </Link>
-    </View>
+    <NavigationIndependentTree>
+    <NavigationContainer>
+      <stack.Navigator>
+        <stack.Screen options={{headerShown: false}} name="Home1" component={Home1} />
+        <stack.Screen   name="Home2" component={Home2} />
+        <stack.Screen   options={{headerShown: false}} name="AdminTabNavigation" component={AdminTabNavigation}/>
+      </stack.Navigator>
+    </NavigationContainer>
+    </NavigationIndependentTree>
+     
+   
   )
 }
 
-
 export default index
-
-const styles = StyleSheet.create({})

@@ -81,7 +81,7 @@ export default (props) => {
                          <View style={styles.box2}></View>
                          <Text style={styles.text8}>{"Remove"}</Text>
                       </View>
-                      <TouchableOpacity style={styles.button}  onPress={() => props.navigation.navigate("NotificationDetails",{id: item.id, title: item.title, imageUri: item.imageUri, muteImageUri: item.muteImageUri, date: item.date, summary: item.summary})}>
+                      <TouchableOpacity style={styles.button}  onPress={() => props.navigation.navigate("SchemeDetails",{id: item.id, title: item.title, imageUri: item.imageUri, muteImageUri: item.muteImageUri, date: item.date, summary: item.summary})}>
                          <Text style={styles.text9}>{"View"}</Text>
                       </TouchableOpacity>
                    </View>

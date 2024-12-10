@@ -3,7 +3,7 @@ import React from 'react'
 
 import { View, Text, Image, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
 
-const NotificationDetails = ( props) => {
+const SchemeDetails = ( props) => {
   const { title , id , imageUri , muteImageUri , date , summary } =  props.route.params;
   return (
     <ScrollView  style={styles.scrollView}>
@@ -47,7 +47,7 @@ const NotificationDetails = ( props) => {
   )
 }
 
-export default NotificationDetails
+export default SchemeDetails
 
 const styles = StyleSheet.create({
 	button: {
