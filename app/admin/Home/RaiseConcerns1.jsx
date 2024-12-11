@@ -4,16 +4,7 @@ export default (props) => {
 	return (
 		<SafeAreaView style={styles.container}>
 			<ScrollView  style={styles.scrollView}>
-				<View style={styles.row}>
-					<Text style={styles.text}>
-						{"9:41"}
-					</Text>
-					<Image
-						source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/9d07bb37-829e-4430-b485-2e7201211f19"}} 
-						resizeMode = {"stretch"}
-						style={styles.image}
-					/>
-				</View>
+			
 				<View style={styles.column}>
 					<View style={styles.row2}>
 						<Image
@@ -99,60 +90,13 @@ export default (props) => {
 							</View>
 						</View>
 					</View>
-					<TouchableOpacity style={styles.button} onPress={()=>alert('Pressed!')}>
+					<TouchableOpacity style={styles.button} onPress={()=> props.navigation.navigate("RaiseConcerns2")}>
 						<Text style={styles.text7}>
 							{"Next"}
 						</Text>
 					</TouchableOpacity>
 				</View>
-				<View style={styles.column3}>
-					<View style={styles.row7}>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/e5b8bfea-179f-468a-b4ba-cafc41bc98e1"}} 
-							resizeMode = {"stretch"}
-							style={styles.image7}
-						/>
-						<View style={styles.box}>
-						</View>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/49b658df-0a90-488f-a70a-91f185688037"}} 
-							resizeMode = {"stretch"}
-							style={styles.image8}
-						/>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/abad47b9-b3ad-476e-8514-85e570653c55"}} 
-							resizeMode = {"stretch"}
-							style={styles.image9}
-						/>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/ff0c137f-e41f-419e-b38f-b131f405daa5"}} 
-							resizeMode = {"stretch"}
-							style={styles.image10}
-						/>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/997cd317-39e5-4e6e-bca0-3242e409cb70"}} 
-							resizeMode = {"stretch"}
-							style={styles.image2}
-						/>
-					</View>
-					<View style={styles.row8}>
-						<Text style={styles.text8}>
-							{"Home"}
-						</Text>
-						<Text style={styles.text9}>
-							{"  Doctors"}
-						</Text>
-						<Text style={styles.text9}>
-							{"Policies"}
-						</Text>
-						<Text style={styles.text10}>
-							{"Queries"}
-						</Text>
-						<Text style={styles.text10}>
-							{"Profile"}
-						</Text>
-					</View>
-				</View>
+				
 			</ScrollView>
 		</SafeAreaView>
 	)

@@ -1,20 +1,11 @@
 import { React, useState} from "react";
-import { SafeAreaView, View, ScrollView, Text, Image, TextInput, ImageBackground, StyleSheet, } from "react-native";
+import { SafeAreaView, View, ScrollView, Text, Image, TextInput, ImageBackground, StyleSheet, TouchableOpacity, } from "react-native";
 export default (props) => {
 	const [textInput1, onChangeTextInput1] = useState('');
 	return (
 		<SafeAreaView style={styles.container}>
 			<ScrollView  style={styles.scrollView}>
-				<View style={styles.row}>
-					<Text style={styles.text}>
-						{"9:40"}
-					</Text>
-					<Image
-						source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/c99471a9-7d9b-43d4-bb5f-9f1e447dc79d"}} 
-						resizeMode = {"stretch"}
-						style={styles.image}
-					/>
-				</View>
+				
 				<View style={styles.column}>
 					<View style={styles.view}>
 						<View style={styles.row2}>
@@ -55,7 +46,7 @@ export default (props) => {
 						</View>
 					</View>
 				</View>
-				<View style={styles.row4}>
+				<TouchableOpacity onPress={()=> props.navigation.navigate("HospitalList")} style={styles.row4}>
 					<View style={styles.view4}>
 						<Image
 							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/58e971e4-a42e-4c26-8023-6670c540d294"}} 
@@ -71,7 +62,7 @@ export default (props) => {
 							{"View Details ->"}
 						</Text>
 					</View>
-				</View>
+				</TouchableOpacity>
 				<View style={styles.row5}>
 					<View style={styles.view5}>
 						<View >
@@ -186,47 +177,8 @@ export default (props) => {
 						style={styles.image9}
 					/>
 				</View>
-				<View style={styles.row12}>
-					<Image
-						source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/9ed10499-1d23-44a7-ac4e-5147858baebd"}} 
-						resizeMode = {"stretch"}
-						style={styles.image10}
-					/>
-					<Image
-						source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/7d3f77f8-2491-464b-b3c3-8c3b8053288c"}} 
-						resizeMode = {"stretch"}
-						style={styles.image11}
-					/>
-					<Image
-						source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/9d9ec9f0-ec6c-4395-b652-896cdece0378"}} 
-						resizeMode = {"stretch"}
-						style={styles.image12}
-					/>
-					<View style={styles.box}>
-					</View>
-					<Image
-						source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/99a6df4c-c7d9-4c00-883f-d63e8c212462"}} 
-						resizeMode = {"stretch"}
-						style={styles.image12}
-					/>
-				</View>
-				<View style={styles.row13}>
-					<Text style={styles.text15}>
-						{"Home"}
-					</Text>
-					<Text style={styles.text16}>
-						{"  Doctors"}
-					</Text>
-					<Text style={styles.text16}>
-						{"Policies"}
-					</Text>
-					<Text style={styles.text17}>
-						{"Queries"}
-					</Text>
-					<Text style={styles.text17}>
-						{"Profile"}
-					</Text>
-				</View>
+				
+		
 			</ScrollView>
 		</SafeAreaView>
 	)

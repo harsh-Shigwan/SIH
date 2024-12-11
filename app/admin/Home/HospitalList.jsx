@@ -1,20 +1,34 @@
 import React, {useState} from "react";
-import { SafeAreaView, View, ScrollView, Text, Image, TextInput, StyleSheet, } from "react-native";
+import { SafeAreaView, View, ScrollView, Text, Image, TextInput, StyleSheet, TouchableOpacity, } from "react-native";
+
+const data = [
+	{
+		id : 1,
+		name : "Apollo Hospital",
+		address : "Sector 1, Chandigarh",
+		phone : "1234567890",
+		
+	},{
+		id : 2,
+		name : "DN Hospital",
+		address : "Sector 1, Chandigarh",
+		phone : "1234567890",
+	},{
+		
+			id : 3,
+			name : "DDD Hospital",
+			address : "Sector 1, Chandigarh",
+			phone : "1234567890",
+		
+	}
+]
 export default (props) => {
 	const [textInput1, onChangeTextInput1] = useState('');
+	
 	return (
 		<SafeAreaView style={styles.container}>
 			<ScrollView  style={styles.scrollView}>
-				<View style={styles.row}>
-					<Text style={styles.text}>
-						{"9:40"}
-					</Text>
-					<Image
-						source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/594106f1-d72d-4165-a384-3f47e4409966"}} 
-						resizeMode = {"stretch"}
-						style={styles.image}
-					/>
-				</View>
+				
 				<View style={styles.column}>
 					<View style={styles.view}>
 						<View style={styles.view2}>
@@ -51,7 +65,40 @@ export default (props) => {
 								style={styles.image4}
 							/>
 						</View>
-						<View style={styles.column3}>
+						{
+							data.map((fun ,idx)=>(
+								<TouchableOpacity onPress={()=> props.navigation.navigate("HospitalDetails",{id : fun.id , name : fun.name, address : fun.address, phone : fun.phone})} key={idx} style={styles.column3}>
+								
+								<View style={styles.row4}>
+									<Text style={styles.text3}>
+										{fun.name}
+									</Text>
+									<Image
+										source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/958b8adc-7c88-4a70-90ce-4cd374eea50b"}} 
+										resizeMode = {"stretch"}
+										style={styles.image5}
+									/>
+									<Text style={styles.text4}>
+										{"Active"}
+									</Text>
+								</View>
+								<View style={styles.row5}>
+									<Image
+										source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/a4b8e946-1d37-48a4-87e6-472a9c37ad7b"}} 
+										resizeMode = {"stretch"}
+										style={styles.image6}
+									/>
+									<Text style={styles.text5}>
+										{fun.address}
+									</Text>
+								</View>
+								<Text style={styles.text6}>
+									{fun.contact}
+								</Text>
+							</TouchableOpacity>
+							)	)
+						}
+						<TouchableOpacity onPress={()=> props.navigation.navigate("HospitalDetails")} style={styles.column3}>
 							<View style={styles.row4}>
 								<Text style={styles.text3}>
 									{"City Hospital"}
@@ -78,164 +125,13 @@ export default (props) => {
 							<Text style={styles.text6}>
 								{"Contact: +91-9876543210 "}
 							</Text>
-						</View>
-						<View style={styles.column4}>
-							<View style={styles.row6}>
-								<Text style={styles.text7}>
-									{"Green Valley Hospital"}
-								</Text>
-								<Image
-									source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/a4000418-4a2e-498f-9ab5-b378656f14ce"}} 
-									resizeMode = {"stretch"}
-									style={styles.image7}
-								/>
-								<Text style={styles.text8}>
-									{"Critical"}
-								</Text>
-							</View>
-							<View style={styles.row7}>
-								<Image
-									source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/98bb0157-8669-4108-a696-0109b1c8b660"}} 
-									resizeMode = {"stretch"}
-									style={styles.image6}
-								/>
-								<Text style={styles.text5}>
-									{"Location: Thane"}
-								</Text>
-							</View>
-							<Text style={styles.text6}>
-								{"Contact: +91-9876543210 "}
-							</Text>
-						</View>
-						<View style={styles.column5}>
-							<View style={styles.row8}>
-								<Text style={styles.text9}>
-									{"Rainbow Medical Center"}
-								</Text>
-								<Image
-									source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/e2de6ff6-4c33-41fc-9dcd-4fa39ed1e079"}} 
-									resizeMode = {"stretch"}
-									style={styles.image8}
-								/>
-								<Text style={styles.text10}>
-									{"Active"}
-								</Text>
-							</View>
-							<View style={styles.row5}>
-								<Image
-									source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/1a6cf045-c27e-46dd-8628-75901aad8d5d"}} 
-									resizeMode = {"stretch"}
-									style={styles.image6}
-								/>
-								<Text style={styles.text5}>
-									{"Location: Mumbai"}
-								</Text>
-							</View>
-							<Text style={styles.text6}>
-								{"Contact: +91-9876543210 "}
-							</Text>
-						</View>
-						<View style={styles.column6}>
-							<View style={styles.row9}>
-								<Text style={styles.text11}>
-									{"Apollo Healthcare"}
-								</Text>
-								<Image
-									source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/d9b63004-6bbc-40b4-9b62-473455cb39f0"}} 
-									resizeMode = {"stretch"}
-									style={styles.image5}
-								/>
-								<Text style={styles.text10}>
-									{"Active"}
-								</Text>
-							</View>
-							<View style={styles.row7}>
-								<Image
-									source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/3c2f401a-772e-4263-be96-8a90fb70cd14"}} 
-									resizeMode = {"stretch"}
-									style={styles.image6}
-								/>
-								<Text style={styles.text5}>
-									{"Location: Thane"}
-								</Text>
-							</View>
-							<Text style={styles.text6}>
-								{"Contact: +91-9876543210 "}
-							</Text>
-						</View>
-						<View style={styles.column7}>
-							<View style={styles.row10}>
-								<Text style={styles.text12}>
-									{"LifeCare Hospital"}
-								</Text>
-								<Image
-									source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/882d54b0-8932-47de-bdf8-4b4b75293299"}} 
-									resizeMode = {"stretch"}
-									style={styles.image5}
-								/>
-								<Text style={styles.text10}>
-									{"Active"}
-								</Text>
-							</View>
-							<View style={styles.row11}>
-								<Image
-									source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/66851d38-20c0-405e-b00e-b21e1c39ad0f"}} 
-									resizeMode = {"stretch"}
-									style={styles.image6}
-								/>
-								<Text style={styles.text5}>
-									{"Location: Kuldabad"}
-								</Text>
-							</View>
-							<Text style={styles.text6}>
-								{"Contact: +91-9876543210 "}
-							</Text>
-						</View>
+						</TouchableOpacity>
+						
+						
+						
 					</View>
 				</View>
-				<View style={styles.column8}>
-					<View style={styles.row12}>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/6bd71deb-37ca-411d-a101-6b02abc9143b"}} 
-							resizeMode = {"stretch"}
-							style={styles.image9}
-						/>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/901c3551-98df-4702-9ce8-8d6bb04e4c64"}} 
-							resizeMode = {"stretch"}
-							style={styles.image10}
-						/>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/652e7737-8b4e-4641-bf3a-6d475ef31d9d"}} 
-							resizeMode = {"stretch"}
-							style={styles.image11}
-						/>
-						<View style={styles.box}>
-						</View>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/c2d29d0d-90ed-40f8-87e5-abfb562b1ef6"}} 
-							resizeMode = {"stretch"}
-							style={styles.image11}
-						/>
-					</View>
-					<View style={styles.row13}>
-						<Text style={styles.text13}>
-							{"Home"}
-						</Text>
-						<Text style={styles.text14}>
-							{"  Doctors"}
-						</Text>
-						<Text style={styles.text15}>
-							{"Policies"}
-						</Text>
-						<Text style={styles.text16}>
-							{"Queries"}
-						</Text>
-						<Text style={styles.text6}>
-							{"Profile"}
-						</Text>
-					</View>
-				</View>
+				
 			</ScrollView>
 		</SafeAreaView>
 	)

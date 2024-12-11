@@ -1,169 +1,92 @@
-import React, {useState} from "react";
-import { SafeAreaView, View, ScrollView, Text, Image, TextInput, StyleSheet, } from "react-native";
+import React, { useEffect, useState } from "react";
+import { SafeAreaView, View, ScrollView, Text, ActivityIndicator, StyleSheet, TouchableOpacity, Image } from "react-native";
+import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 export default (props) => {
-	const [textInput1, onChangeTextInput1] = useState('');
-	return (
+    const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const token = await AsyncStorage.getItem('token');
+                console.log('Token string from storage:', token); // Check if token is stored
+
+                if (!token) {
+                    setError('No token found, please log in.');
+                    setLoading(false);
+                    return;
+                }
+
+                const config = {
+                    headers: {
+                        Authorization: `Token ${token}`, // Use token in the header
+                    },
+                };
+
+                // Make the GET request
+                const response = await axios.get('http://127.0.0.1:8000/admin_app/policies/', config);
+                setData(response.data);
+                setLoading(false);
+                console.log('Response data:', response.data);
+            } catch (err) {
+                setError('Error fetching data');
+                setLoading(false);
+                console.error("Error:", err.response?.data || err.message);
+                console.error('Error fetching data:', err);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    if (loading) {
+        return (
+            <SafeAreaView style={styles.container}>
+                <ActivityIndicator size="large" color="#0000ff" />
+                <Text>Loading...</Text>
+            </SafeAreaView>
+        );
+    }
+
+    if (error) {
+        return (
+            <SafeAreaView style={styles.container}>
+                <Text style={styles.errorText}>{error}</Text>
+            </SafeAreaView>
+        );
+    }
+
+	  return (
 		<SafeAreaView style={styles.container}>
-			<ScrollView  style={styles.scrollView}>
-				<View style={styles.row}>
-					<Text style={styles.text}>
-						{"9:40"}
-					</Text>
-					<Image
-						source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/46b8089e-d28e-4783-bfca-9e68d38c89ea"}} 
-						resizeMode = {"stretch"}
-						style={styles.image}
-					/>
+		  <ScrollView style={styles.scrollView}>
+			{loading && <Text>Loading...</Text>}
+			{error && <Text style={{color: 'red'}}>{error}</Text>}
+	  
+			{!loading && !error && data && Array.isArray(data) && data.map((func, idx) => (
+			  <TouchableOpacity
+				key={idx}
+				style={styles.row3}
+				onPress={() => props.navigation.navigate("PolicyDescription" , {id: func.id  , title: func.title, onPress: func.onPress, imageUri: func.imageUri, muteImageUri: func.muteImageUri, date: func.date, summary: func.summary})}
+			  >
+				<Image
+				  source={{
+					uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/3203c84f-1359-4c05-be79-8b9c30bd9db5",
+				  }}
+				  resizeMode={"stretch"}
+				  style={styles.image3}
+				/>
+				<View style={styles.column2}>
+				  <Text style={styles.text3}>{func.name}</Text>
+				  <Text style={styles.text4}>{"₹5L health coverage for poor families."}</Text>
 				</View>
-				<View style={styles.column}>
-					<Text style={styles.text2}>
-						{"Health Programs and Policies"}
-					</Text>
-					<View style={styles.row2}>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/c91d7aa7-2bab-4fbf-8f87-969819eee1ac"}} 
-							resizeMode = {"stretch"}
-							style={styles.image2}
-						/>
-						<TextInput
-							placeholder={"Search policies by title"}
-							value={textInput1}
-							onChangeText={onChangeTextInput1}
-							style={styles.input}
-						/>
-					</View>
-					<View style={styles.row3}>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/3203c84f-1359-4c05-be79-8b9c30bd9db5"}} 
-							resizeMode = {"stretch"}
-							style={styles.image3}
-						/>
-						<View style={styles.column2}>
-							<Text style={styles.text3}>
-								{"Ayushman Bharat - PMJAY"}
-							</Text>
-							<Text style={styles.text4}>
-								{"₹5L health coverage for poor families."}
-							</Text>
-						</View>
-					</View>
-					<View style={styles.row3}>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/9d3b11fd-9505-44a6-bfb3-fb5bb503bc10"}} 
-							resizeMode = {"stretch"}
-							style={styles.image3}
-						/>
-						<View style={styles.column2}>
-							<Text style={styles.text5}>
-								{"ICDS (Integrated Child Development Services)"}
-							</Text>
-							<Text style={styles.text4}>
-								{"Nutrition and care for kids and mothers."}
-							</Text>
-						</View>
-					</View>
-					<View style={styles.row4}>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/d583d4d6-0444-45c8-a5ae-4c6488e7211b"}} 
-							resizeMode = {"stretch"}
-							style={styles.image4}
-						/>
-						<View style={styles.column3}>
-							<Text style={styles.text6}>
-								{"Rashtriya Swasthya Bima Yojana (RSBY)"}
-							</Text>
-							<Text style={styles.text4}>
-								{"₹5L health coverage for poor families."}
-							</Text>
-						</View>
-					</View>
-					<View style={styles.row3}>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/f60d25d7-a79f-47d6-98df-d57cb3b38f5e"}} 
-							resizeMode = {"stretch"}
-							style={styles.image5}
-						/>
-						<View style={styles.column2}>
-							<Text style={styles.text5}>
-								{"National Immunization Program (NIP)"}
-							</Text>
-							<Text style={styles.text4}>
-								{"Free vaccines for children."}
-							</Text>
-						</View>
-					</View>
-					<View style={styles.row5}>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/d9f93002-416e-4fc0-b153-5bc8d1b41908"}} 
-							resizeMode = {"stretch"}
-							style={styles.image6}
-						/>
-						<View style={styles.column3}>
-							<Text style={styles.text6}>
-								{"Rashtriya Swasthya Bima Yojana (RSBY)"}
-							</Text>
-							<Text style={styles.text4}>
-								{"₹30K hospitalization for BPL families."}
-							</Text>
-						</View>
-					</View>
-				</View>
-				<Text style={styles.text7}>
-					{"Add New Policy"}
-				</Text>
-				<View >
-					<Image
-						source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/ec2fe44c-0efc-41e3-9671-b7406f98b768"}} 
-						resizeMode = {"stretch"}
-						style={styles.image7}
-					/>
-					<View style={styles.column4}>
-						<View style={styles.row6}>
-							<Image
-								source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/7fa7742b-a784-4b46-a247-6f3ad3607471"}} 
-								resizeMode = {"stretch"}
-								style={styles.image8}
-							/>
-							<Image
-								source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/f29b9b1e-60d5-4d6b-b592-fc5c663b615d"}} 
-								resizeMode = {"stretch"}
-								style={styles.image9}
-							/>
-							<Image
-								source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/563bcc64-4cdc-4898-a125-2e696324711d"}} 
-								resizeMode = {"stretch"}
-								style={styles.image10}
-							/>
-							<View style={styles.box}>
-							</View>
-							<Image
-								source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/c11beb83-218b-4bb0-9bd3-f30806281d07"}} 
-								resizeMode = {"stretch"}
-								style={styles.image10}
-							/>
-						</View>
-						<View style={styles.row7}>
-							<Text style={styles.text8}>
-								{"Home"}
-							</Text>
-							<Text style={styles.text9}>
-								{"  Doctors"}
-							</Text>
-							<Text style={styles.text10}>
-								{"Policies"}
-							</Text>
-							<Text style={styles.text11}>
-								{"Queries"}
-							</Text>
-							<Text style={styles.text4}>
-								{"Profile"}
-							</Text>
-						</View>
-					</View>
-				</View>
-			</ScrollView>
+			  </TouchableOpacity>
+			))}
+		  </ScrollView>
 		</SafeAreaView>
-	)
+	);  
 }
 const styles = StyleSheet.create({
 	container: {

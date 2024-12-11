@@ -1,58 +1,58 @@
 import React from "react";
-import { SafeAreaView, View, ScrollView, Text, Image, StyleSheet, } from "react-native";
+import { SafeAreaView, View, ScrollView, Text, Image, StyleSheet, TouchableOpacity, } from "react-native";
 export default (props) => {
+	const { id , name , address , phone} =props.route.params;
 	return (
 		<SafeAreaView style={styles.container}>
 			<ScrollView  style={styles.scrollView}>
-				<View style={styles.row}>
-					<Text style={styles.text}>
-						{"9:41"}
-					</Text>
-					<Image
-						source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/f53b6229-6813-448c-816b-c3841d4c971c"}} 
-						resizeMode = {"stretch"}
-						style={styles.image}
-					/>
-				</View>
+				
 				<View style={styles.row2}>
-					<Text style={styles.text2}>
-						{"Hospital Details"}
-					</Text>
 					<Image
-						source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/d69766b1-489d-4007-97e0-9d3c4558c95e"}} 
+						source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/0dc27ca3-c6c7-4e94-89f2-8e680d930086"}} 
 						resizeMode = {"stretch"}
 						style={styles.image2}
 					/>
+					<Text style={styles.text2}>
+						{"Hospital Details"}
+					</Text>
+					<View style={styles.box}>
+					</View>
+					<TouchableOpacity onPress={()=> props.navigation.navigate("RaiseConcerns1")} >
+					<Image
+						source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/587cb39c-986d-4708-8ea2-4d6bdd24076b"}} 
+						resizeMode = {"stretch"}
+						style={styles.image3}
+					/></TouchableOpacity>
 				</View>
 				<View style={styles.column}>
 					<View style={styles.row3}>
 						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/7a0b5c4a-7286-4ca0-9815-76035d6e9e69"}} 
+							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/b5fecece-cd77-417e-a8c1-a1b36bf48648"}} 
 							resizeMode = {"stretch"}
-							style={styles.image3}
+							style={styles.image4}
 						/>
 						<View style={styles.column2}>
 							<Text style={styles.text3}>
-								{"Breach Candy Hospital"}
+								{name}
 							</Text>
 							<View style={styles.row4}>
 								<Image
-									source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/9370ec23-0e46-4267-b84b-47468621b283"}} 
+									source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/de4ea6d1-3ebe-4e48-ab0d-485996509157"}} 
 									resizeMode = {"stretch"}
-									style={styles.image4}
+									style={styles.image5}
 								/>
 								<Text style={styles.text4}>
-									{"Bhulabhai Desai Marg, Cumballa Hill, Mumbai"}
+									{address}
 								</Text>
 							</View>
 							<View style={styles.row5}>
 								<Image
-									source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/85e7d9cf-0c8a-46d7-acb4-6003eb3541ca"}} 
+									source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/01a2e65a-d776-4a4a-877a-81af5d7e32a6"}} 
 									resizeMode = {"stretch"}
-									style={styles.image5}
+									style={styles.image6}
 								/>
 								<Text style={styles.text5}>
-									{" 022 2366 7949"}
+									{phone}
 								</Text>
 							</View>
 						</View>
@@ -66,12 +66,12 @@ export default (props) => {
 								{"             NABH certified"}
 							</Text>
 						</View>
-						<View style={styles.box}>
+						<View style={styles.box2}>
 						</View>
 						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/fe56d1c2-141d-434c-9c9b-f7b221dfca80"}} 
+							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/991570bb-73a7-4a68-bc83-9f911dd3668a"}} 
 							resizeMode = {"stretch"}
-							style={styles.image6}
+							style={styles.image7}
 						/>
 						<Text style={styles.text4}>
 							{" Open 24 hours"}
@@ -89,27 +89,27 @@ export default (props) => {
 						<Text style={styles.text10}>
 							{"In percentage"}
 						</Text>
-						<View style={styles.box2}>
+						<View style={styles.box3}>
 						</View>
 						<View style={styles.column5}>
 							<Text style={styles.text11}>
 								{"86"}
 							</Text>
 							<View >
-								<View style={styles.box3}>
+								<View style={styles.box4}>
 								</View>
 								<Image
-									source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/4f013c62-4dba-4b2c-bf35-44bf3624d90a"}} 
+									source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/c41ac754-8327-495b-bba4-f030c518c75b"}} 
 									resizeMode = {"stretch"}
 									style={styles.absoluteImage}
 								/>
 							</View>
 						</View>
 						<View style={styles.column6}>
-							<View style={styles.box4}>
+							<View style={styles.box5}>
 							</View>
 							<Image
-								source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/2ee6ba3f-bbf0-4a66-95e8-a10b3565e2c8"}} 
+								source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/e7fded7a-064a-425d-83b8-f68d77b92382"}} 
 								resizeMode = {"stretch"}
 								style={styles.absoluteImage2}
 							/>
@@ -119,10 +119,10 @@ export default (props) => {
 								{"93"}
 							</Text>
 							<View >
-								<View style={styles.box5}>
+								<View style={styles.box6}>
 								</View>
 								<Image
-									source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/c7e3f794-bbec-4aca-9c9b-b17151fbd99b"}} 
+									source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/ca04be7f-4e6e-4139-9a23-642aefbeedd0"}} 
 									resizeMode = {"stretch"}
 									style={styles.absoluteImage3}
 								/>
@@ -133,10 +133,10 @@ export default (props) => {
 								{"93"}
 							</Text>
 							<View >
-								<View style={styles.box5}>
+								<View style={styles.box6}>
 								</View>
 								<Image
-									source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/1005d5fc-cb6c-40ac-b99f-b88590054315"}} 
+									source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/edaee649-adaa-48cc-ae91-0d5e7d52c030"}} 
 									resizeMode = {"stretch"}
 									style={styles.absoluteImage}
 								/>
@@ -147,10 +147,10 @@ export default (props) => {
 								{"34"}
 							</Text>
 							<View >
-								<View style={styles.box6}>
+								<View style={styles.box7}>
 								</View>
 								<Image
-									source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/7e45f3ff-311c-4c18-94e3-c35018f7b55c"}} 
+									source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/39f5bc90-7da2-4006-8331-4c30dc0d0db7"}} 
 									resizeMode = {"stretch"}
 									style={styles.absoluteImage}
 								/>
@@ -248,51 +248,11 @@ export default (props) => {
 				</View>
 				<View style={styles.column14}>
 					<View style={styles.row12}>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/015bd8ca-9491-49d8-ba15-7a3692c15faa"}} 
-							resizeMode = {"stretch"}
-							style={styles.image7}
-						/>
-						<View style={styles.box7}>
-						</View>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/aba9f61c-d1a2-4b15-898a-a8b2bd6862da"}} 
-							resizeMode = {"stretch"}
-							style={styles.image8}
-						/>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/e4280716-da58-4126-8c89-9a414c68ec44"}} 
-							resizeMode = {"stretch"}
-							style={styles.image9}
-						/>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/349bf321-0d9b-4a35-8635-c0eaf1fc9661"}} 
-							resizeMode = {"stretch"}
-							style={styles.image10}
-						/>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/51d0abdd-f670-4d7e-bc68-0eaa758f1e18"}} 
-							resizeMode = {"stretch"}
-							style={styles.image2}
-						/>
+						
+						
+						
 					</View>
-					<View style={styles.row13}>
-						<Text style={styles.text24}>
-							{"Home"}
-						</Text>
-						<Text style={styles.text25}>
-							{"  Doctors"}
-						</Text>
-						<Text style={styles.text25}>
-							{"Policies"}
-						</Text>
-						<Text style={styles.text26}>
-							{"Queries"}
-						</Text>
-						<Text style={styles.text26}>
-							{"Profile"}
-						</Text>
-					</View>
+					
 				</View>
 			</ScrollView>
 		</SafeAreaView>
@@ -332,34 +292,34 @@ const styles = StyleSheet.create({
 		height: 10,
 	},
 	box: {
+		flex: 1,
+	},
+	box2: {
 		width: 1,
 		height: 40,
 		backgroundColor: "#E5E7EB",
 		marginRight: 31,
 	},
-	box2: {
+	box3: {
 		width: 1,
 		height: 159,
 		marginRight: 17,
 	},
-	box3: {
+	box4: {
 		height: 111,
 		backgroundColor: "#66CB9F",
 	},
-	box4: {
+	box5: {
 		height: 152,
 		backgroundColor: "#66CB9F",
 	},
-	box5: {
+	box6: {
 		height: 126,
 		backgroundColor: "#66CB9F",
 	},
-	box6: {
+	box7: {
 		height: 51,
 		backgroundColor: "#F24822",
-	},
-	box7: {
-		flex: 1,
 	},
 	column: {
 		backgroundColor: "#FFFFFF",
@@ -467,44 +427,53 @@ const styles = StyleSheet.create({
 	image2: {
 		width: 24,
 		height: 24,
+		marginRight: 67,
 	},
 	image3: {
+		width: 16,
+		height: 12,
+	},
+	image4: {
 		borderRadius: 41,
 		width: 60,
 		height: 58,
 	},
-	image4: {
+	image5: {
 		width: 12,
 		height: 12,
 	},
-	image5: {
+	image6: {
 		width: 12,
 		height: 12,
 		marginRight: 6,
 	},
-	image6: {
+	image7: {
 		width: 18,
 		height: 18,
 		marginRight: 4,
 	},
-	image7: {
+	image8: {
 		width: 19,
 		height: 20,
-	},
-	image8: {
-		width: 24,
-		height: 24,
-		marginRight: 51,
 	},
 	image9: {
 		width: 24,
 		height: 24,
-		marginRight: 53,
+		marginRight: 51,
 	},
 	image10: {
+		width: 24,
+		height: 24,
+		marginRight: 53,
+	},
+	image11: {
 		width: 15,
 		height: 20,
 		marginRight: 49,
+	},
+	image12: {
+		width: 24,
+		height: 24,
 	},
 	row: {
 		flexDirection: "row",
@@ -518,8 +487,7 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		backgroundColor: "#FFFFFF",
 		paddingVertical: 14,
-		paddingLeft: 107,
-		paddingRight: 16,
+		paddingHorizontal: 16,
 	},
 	row3: {
 		flexDirection: "row",
@@ -592,8 +560,6 @@ const styles = StyleSheet.create({
 	text2: {
 		color: "#18181B",
 		fontSize: 16,
-		marginRight: 4,
-		flex: 1,
 	},
 	text3: {
 		color: "#18181B",

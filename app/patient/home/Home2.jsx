@@ -1,12 +1,11 @@
 import React from "react";
 import { SafeAreaView, View, ScrollView, Text, Image, StyleSheet,  TouchableOpacity} from "react-native";
+import Icon from "react-native-vector-icons/Ionicons";
 export default (props) => {
 	return (
 		<SafeAreaView style={styles.container}>
 			<ScrollView  style={styles.scrollView}>
-				<Text style={styles.text}>
-					{"Skip"}
-				</Text>
+				
 				<Image
 					source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/36aeab63-aa9c-4fd3-9baa-cd0057711711"}} 
 					resizeMode = {"stretch"}
@@ -22,14 +21,8 @@ export default (props) => {
 					</View>
 					<View style={styles.box3}>
 					</View>
-                    <TouchableOpacity onPress={()=> props.navigation.navigate("AdminTabNavigation")} style={styles.button}>
-                    <Image
-                      source={{
-                        uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/0a1ce12a-7deb-4d6e-a5e7-9347a9341b3f",
-                      }}
-                      resizeMode="stretch"
-                      style={styles.image2}
-                    />
+                    <TouchableOpacity onPress={()=> props.navigation.navigate("LoginSignUp")} style={styles.button}>
+                    <Icon name="arrow-forward" size={24} color="#fff" />
                   </TouchableOpacity>
 				</View>
 			</ScrollView>
@@ -75,7 +68,7 @@ const styles = StyleSheet.create({
 	scrollView: {
 		flex: 1,
 		backgroundColor: "#FFFFFF",
-		paddingTop: 70,
+		paddingTop: 0,
 		paddingRight: 31,
 	},
 	text: {
@@ -90,10 +83,15 @@ const styles = StyleSheet.create({
 		marginBottom: 25,
 		marginLeft: 31,
 	},  button: {
-        width: 192,
-        height: 96,
-        borderRadius: 16,
-        overflow: "hidden",
-        marginTop: 20,
+        height: 56, 
+       width: 56,
+  borderRadius: 98, 
+  overflow: "hidden",
+  marginTop: 20,
+  backgroundColor: "#4C6FFF",
+  justifyContent: "center",
+  alignItems: "center", 
+  marginBottom: 20,
+
       },
 });

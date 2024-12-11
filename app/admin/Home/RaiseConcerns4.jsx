@@ -4,16 +4,7 @@ export default (props) => {
 	return (
 		<SafeAreaView style={styles.container}>
 			<ScrollView  style={styles.scrollView}>
-				<View style={styles.row}>
-					<Text style={styles.text}>
-						{"9:41"}
-					</Text>
-					<Image
-						source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/99654b64-41f5-4c87-bb69-d9ac79bb8d1a"}} 
-						resizeMode = {"stretch"}
-						style={styles.image}
-					/>
-				</View>
+				
 				<View style={styles.column}>
 					<View style={styles.row2}>
 						<Image
@@ -85,12 +76,8 @@ export default (props) => {
 								{"Sucessfully sent the concerns to the hospital"}
 							</Text>
 							<View style={styles.row4}>
-								<TouchableOpacity style={styles.button} onPress={()=>alert('Pressed!')}>
-									<Text style={styles.text5}>
-										{"Cancel"}
-									</Text>
-								</TouchableOpacity>
-								<TouchableOpacity style={styles.button2} onPress={()=>alert('Pressed!')}>
+								
+								<TouchableOpacity style={styles.button2} onPress={()=> props.navigation.navigate("AdminDashboard")}>
 									<Text style={styles.text6}>
 										{"Home"}
 									</Text>
@@ -104,54 +91,7 @@ export default (props) => {
 						/>
 					</View>
 				</View>
-				<View style={styles.column4}>
-					<View style={styles.row5}>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/232a962a-f335-468f-8232-720d3521166d"}} 
-							resizeMode = {"stretch"}
-							style={styles.image4}
-						/>
-						<View style={styles.box}>
-						</View>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/ece798fc-7c44-4a37-8b64-b68cf665f694"}} 
-							resizeMode = {"stretch"}
-							style={styles.image5}
-						/>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/fdc24fc8-4df1-424e-9500-ac2fcf38e930"}} 
-							resizeMode = {"stretch"}
-							style={styles.image6}
-						/>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/908daf2f-6bc9-4f2d-a5c6-edd0481cd565"}} 
-							resizeMode = {"stretch"}
-							style={styles.image7}
-						/>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/01d35dcf-dc14-485e-895f-2b5da375455d"}} 
-							resizeMode = {"stretch"}
-							style={styles.image2}
-						/>
-					</View>
-					<View style={styles.row6}>
-						<Text style={styles.text7}>
-							{"Home"}
-						</Text>
-						<Text style={styles.text8}>
-							{"  Doctors"}
-						</Text>
-						<Text style={styles.text8}>
-							{"Policies"}
-						</Text>
-						<Text style={styles.text9}>
-							{"Queries"}
-						</Text>
-						<Text style={styles.text9}>
-							{"Profile"}
-						</Text>
-					</View>
-				</View>
+			
 			</ScrollView>
 		</SafeAreaView>
 	)
@@ -282,7 +222,8 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		justifyContent: "space-between",
 		alignItems: "center",
-		marginHorizontal: 15,
+		marginHorizontal: 95,
+		
 	},
 	row5: {
 		flexDirection: "row",
@@ -312,7 +253,7 @@ const styles = StyleSheet.create({
 		color: "#7C8691",
 		fontSize: 24,
 		marginBottom: 33,
-		marginHorizontal: 112,
+		marginHorizontal: 122,
 	},
 	text4: {
 		color: "#D3DAE0",
@@ -327,6 +268,7 @@ const styles = StyleSheet.create({
 	text6: {
 		color: "#FFFFFF",
 		fontSize: 14,
+
 	},
 	text7: {
 		color: "#4C6FFF",

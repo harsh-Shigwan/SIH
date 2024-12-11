@@ -73,7 +73,7 @@ export default ( props) => {
         
         {/* Mapping over doctors */}
         {doctors.map((doctor, index) => (
-          <TouchableOpacity style={styles.row4} key={index} onPress={()=> props.navigation.navigate("DocPage")}>
+          <TouchableOpacity style={styles.row4} key={index} onPress={()=> props.navigation.navigate("DocPage")} >
             <Image
               source={{ uri: doctor.imageUrl }}
               resizeMode={"stretch"}

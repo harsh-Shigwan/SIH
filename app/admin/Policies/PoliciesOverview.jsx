@@ -1,27 +1,18 @@
 import React, {useState} from "react";
-import { SafeAreaView, View, ScrollView, Text, Image, TextInput, StyleSheet, } from "react-native";
+import { SafeAreaView, View, ScrollView, Text, Image, TextInput, StyleSheet, TouchableOpacity, } from "react-native";
 export default (props) => {
 	const [textInput1, onChangeTextInput1] = useState('');
 	return (
 		<SafeAreaView style={styles.container}>
 			<ScrollView  style={styles.scrollView}>
-				<View style={styles.row}>
-					<Text style={styles.text}>
-						{"9:40"}
-					</Text>
-					<Image
-						source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/41e3e864-7878-4c8a-9433-521ec2534535"}} 
-						resizeMode = {"stretch"}
-						style={styles.image}
-					/>
-				</View>
+				
 				<TextInput
 					placeholder={"Programs & Policies Overview"}
 					value={textInput1}
 					onChangeText={onChangeTextInput1}
 					style={styles.input}
 				/>
-				<View style={styles.row2}>
+				<TouchableOpacity  onPress={()=> props.navigation.navigate("ActivePolicies")} style={styles.row2}>
 					<View style={styles.column}>
 						<Text style={styles.text2}>
 							{"Active Programs"}
@@ -35,8 +26,8 @@ export default (props) => {
 						resizeMode = {"stretch"}
 						style={styles.image2}
 					/>
-				</View>
-				<View style={styles.row3}>
+				</TouchableOpacity>
+				<TouchableOpacity onPress={()=> props.navigation.navigate("UpcomingPolicies")} style={styles.row3}>
 					<Image
 						source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/beca57b2-f287-4d7f-a83b-966d54ac08e9"}} 
 						resizeMode = {"stretch"}
@@ -50,7 +41,7 @@ export default (props) => {
 							{"Explore programs scheduled for upcoming dates ->"}
 						</Text>
 					</View>
-				</View>
+				</TouchableOpacity>
 				<View style={styles.row4}>
 					<View style={styles.column3}>
 						<Text style={styles.text2}>
@@ -66,49 +57,7 @@ export default (props) => {
 						style={styles.image4}
 					/>
 				</View>
-				<View style={styles.column4}>
-					<View style={styles.row5}>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/a4b888da-4e81-4e93-8717-2f9b15892080"}} 
-							resizeMode = {"stretch"}
-							style={styles.image5}
-						/>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/f2646342-89ab-4ddd-a2a2-9e520dab9b24"}} 
-							resizeMode = {"stretch"}
-							style={styles.image6}
-						/>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/df6c3f66-f63a-4b5c-9497-99f122bd86cd"}} 
-							resizeMode = {"stretch"}
-							style={styles.image7}
-						/>
-						<View style={styles.box}>
-						</View>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/f5024ee8-8163-4011-9a25-a65a7426a3f0"}} 
-							resizeMode = {"stretch"}
-							style={styles.image7}
-						/>
-					</View>
-					<View style={styles.row6}>
-						<Text style={styles.text5}>
-							{"Home"}
-						</Text>
-						<Text style={styles.text6}>
-							{"  Doctors"}
-						</Text>
-						<Text style={styles.text6}>
-							{"Policies"}
-						</Text>
-						<Text style={styles.text7}>
-							{"Queries"}
-						</Text>
-						<Text style={styles.text8}>
-							{"Profile"}
-						</Text>
-					</View>
-				</View>
+				
 			</ScrollView>
 		</SafeAreaView>
 	)

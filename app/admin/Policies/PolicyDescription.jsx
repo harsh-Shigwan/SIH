@@ -1,19 +1,13 @@
 import React from "react";
 import { SafeAreaView, View, ScrollView, Text, Image, TouchableOpacity, StyleSheet, } from "react-native";
 export default (props) => {
+	const { id , name , address , phone} = props.route.params;
+	console.log( 'resct', id)
+	
 	return (
 		<SafeAreaView style={styles.container}>
 			<ScrollView  style={styles.scrollView}>
-				<View style={styles.row}>
-					<Text style={styles.text}>
-						{"9:40"}
-					</Text>
-					<Image
-						source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/d3986b25-6369-4ebb-84ac-f009650d7dbb"}} 
-						resizeMode = {"stretch"}
-						style={styles.image}
-					/>
-				</View>
+				
 				<Text style={styles.text2}>
 					{"Policy Description"}
 				</Text>
@@ -62,49 +56,7 @@ export default (props) => {
 						</Text>
 					</View>
 				</View>
-				<View style={styles.column2}>
-					<View style={styles.row3}>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/61ef0baa-cefc-4e76-8609-76bb4eb32864"}} 
-							resizeMode = {"stretch"}
-							style={styles.image4}
-						/>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/5aacbc4a-4a63-4092-b501-577455c254d1"}} 
-							resizeMode = {"stretch"}
-							style={styles.image5}
-						/>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/712a1f90-db32-43c8-bd04-fa1428915b7e"}} 
-							resizeMode = {"stretch"}
-							style={styles.image6}
-						/>
-						<View style={styles.box}>
-						</View>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/db3f4124-6640-4a6d-acff-92a359b89e9b"}} 
-							resizeMode = {"stretch"}
-							style={styles.image6}
-						/>
-					</View>
-					<View style={styles.row4}>
-						<Text style={styles.text11}>
-							{"Home"}
-						</Text>
-						<Text style={styles.text12}>
-							{"  Doctors"}
-						</Text>
-						<Text style={styles.text12}>
-							{"Policies"}
-						</Text>
-						<Text style={styles.text13}>
-							{"Queries"}
-						</Text>
-						<Text style={styles.text14}>
-							{"Profile"}
-						</Text>
-					</View>
-				</View>
+				
 			</ScrollView>
 		</SafeAreaView>
 	)

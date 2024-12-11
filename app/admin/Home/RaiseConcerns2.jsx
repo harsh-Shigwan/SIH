@@ -8,16 +8,7 @@ export default (props) => {
 	return (
 		<SafeAreaView style={styles.container}>
 			<ScrollView  style={styles.scrollView}>
-				<View style={styles.row}>
-					<Text style={styles.text}>
-						{"9:41"}
-					</Text>
-					<Image
-						source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/49e059cf-c5de-40c9-9795-fa978a0b4aae"}} 
-						resizeMode = {"stretch"}
-						style={styles.image}
-					/>
-				</View>
+				
 				<View style={styles.column}>
 					<View style={styles.row2}>
 						<Image
@@ -160,60 +151,13 @@ export default (props) => {
 							style={styles.image6}
 						/>
 					</View>
-					<TouchableOpacity style={styles.button} onPress={()=>alert('Pressed!')}>
+					<TouchableOpacity style={styles.button} onPress={()=> props.navigation.navigate("RaiseConcerns3")}>
 						<Text style={styles.text7}>
 							{"Next"}
 						</Text>
 					</TouchableOpacity>
 				</View>
-				<View style={styles.column2}>
-					<View style={styles.row9}>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/b3ce9e9d-339d-41c7-8f7d-a712e514fc66"}} 
-							resizeMode = {"stretch"}
-							style={styles.image7}
-						/>
-						<View style={styles.box}>
-						</View>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/03cdd752-c565-45df-b6af-fce71a208f9f"}} 
-							resizeMode = {"stretch"}
-							style={styles.image8}
-						/>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/ea7f99ea-2db7-4095-bd85-28140f6f6314"}} 
-							resizeMode = {"stretch"}
-							style={styles.image9}
-						/>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/9e4c3b17-d162-4424-8165-5baf8f9c6f78"}} 
-							resizeMode = {"stretch"}
-							style={styles.image10}
-						/>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/53d2e74f-ba90-4664-bd87-2efe6cd9531f"}} 
-							resizeMode = {"stretch"}
-							style={styles.image2}
-						/>
-					</View>
-					<View style={styles.row10}>
-						<Text style={styles.text8}>
-							{"Home"}
-						</Text>
-						<Text style={styles.text9}>
-							{"  Doctors"}
-						</Text>
-						<Text style={styles.text9}>
-							{"Policies"}
-						</Text>
-						<Text style={styles.text10}>
-							{"Queries"}
-						</Text>
-						<Text style={styles.text10}>
-							{"Profile"}
-						</Text>
-					</View>
-				</View>
+				
 			</ScrollView>
 		</SafeAreaView>
 	)

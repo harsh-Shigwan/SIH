@@ -20,7 +20,7 @@ function RaiseConcernsNavigation() {
         <Stack.Screen name="AddNewPolicy" component={AddNewPolicy} />
         <Stack.Screen name="ActivePolicies" component={ActivePolicies} />
         <Stack.Screen name="UpcomingPolicies" component={UpcomingPolicies} />
-        <Stack.Screen name="PoliciyDescription" component={PolicyDescription} />
+        <Stack.Screen name="PolicyDescription" component={PolicyDescription} />
       </Stack.Navigator>
     </NavigationContainer>
     </NavigationIndependentTree>

@@ -182,33 +182,7 @@ export default (props) => {
 							style={styles.absoluteImage}
 						/>
 					</View>
-					<View style={styles.column6}>
-						<View style={styles.row10}>
-							<Image
-								source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/6167a281-386a-42e6-97b8-92e6b6f04f51"}} 
-								resizeMode = {"stretch"}
-								style={styles.image7}
-							/>
-							<Image
-								source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/a9d6600f-84e5-46d6-8598-956e30521b22"}} 
-								resizeMode = {"stretch"}
-								style={styles.image8}
-							/>
-							<View style={styles.box4}>
-							</View>
-							<Image
-								source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/7db8e22f-3696-49fe-8099-f63200ea183c"}} 
-								resizeMode = {"stretch"}
-								style={styles.image9}
-							/>
-							<Image
-								source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/037e6a9b-a00e-456a-8f89-095b237a6131"}} 
-								resizeMode = {"stretch"}
-								style={styles.image10}
-							/>
-						</View>
-						
-					</View>
+					
 				</View>
 			</ScrollView>
 		</SafeAreaView>
@@ -349,6 +323,7 @@ const styles = StyleSheet.create({
 		fontSize: 12,
 		flex: 1,
 		paddingVertical: 10,
+		
 	},
 	row: {
 		flexDirection: "row",
@@ -366,6 +341,7 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 25,
 		marginBottom: 20,
 		marginHorizontal: 30,
+		marginTop: 10,
 	},
 	row3: {
 		flexDirection: "row",
@@ -427,7 +403,7 @@ const styles = StyleSheet.create({
 	scrollView: {
 		flex: 1,
 		backgroundColor: "#FFFFFF",
-		paddingTop: 65,
+		paddingTop: 15,
 	},
 	text: {
 		color: "#221F1F",

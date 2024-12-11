@@ -14,7 +14,7 @@ function App() {
     <NavigationIndependentTree>
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home" options={{ headerShown: false }}>
-        <Stack.Screen name="Home" component={Modal} />
+        <Stack.Screen options={{ headerShown: false }} name="Home" component={Modal} />
         <Stack.Screen name="NewPage" component={NewPage} />
         <Stack.Screen name="DocPage" component={DocPage} />
       </Stack.Navigator>

@@ -7,16 +7,7 @@ export default (props) => {
 	return (
 		<SafeAreaView style={styles.container}>
 			<ScrollView  style={styles.scrollView}>
-				<View style={styles.row}>
-					<Text style={styles.text}>
-						{"9:40"}
-					</Text>
-					<Image
-						source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/80a4c7d8-5f05-4402-8ad9-b5a09ad40c6b"}} 
-						resizeMode = {"stretch"}
-						style={styles.image}
-					/>
-				</View>
+			
 				<Text style={styles.text2}>
 					{"Upcoming Programs List"}
 				</Text>

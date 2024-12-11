@@ -4,16 +4,7 @@ export default (props) => {
 	return (
 		<SafeAreaView style={styles.container}>
 			<ScrollView  style={styles.scrollView}>
-				<View style={styles.row}>
-					<Text style={styles.text}>
-						{"9:41"}
-					</Text>
-					<Image
-						source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/914ed96e-a699-45ed-8306-7588d25401b4"}} 
-						resizeMode = {"stretch"}
-						style={styles.image}
-					/>
-				</View>
+				
 				<View style={styles.column}>
 					<View style={styles.row2}>
 						<Image
@@ -114,60 +105,13 @@ export default (props) => {
 							{"I confirm that the above information is accurate to the best of my knowledge."}
 						</Text>
 					</View>
-					<TouchableOpacity style={styles.button} onPress={()=>alert('Pressed!')}>
+					<TouchableOpacity style={styles.button} onPress={()=> props.navigation.navigate("RaiseConcerns4")}>
 						<Text style={styles.text7}>
 							{"Raise Issue "}
 						</Text>
 					</TouchableOpacity>
 				</View>
-				<View style={styles.column2}>
-					<View style={styles.row7}>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/12652966-bc27-482a-b343-6f117b49cdeb"}} 
-							resizeMode = {"stretch"}
-							style={styles.image7}
-						/>
-						<View style={styles.box}>
-						</View>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/a101ab39-8418-436a-9992-0640113e7989"}} 
-							resizeMode = {"stretch"}
-							style={styles.image8}
-						/>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/4087f4f5-8705-46f7-a361-44a458966d8a"}} 
-							resizeMode = {"stretch"}
-							style={styles.image9}
-						/>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/4426912e-7cbb-4f0f-9c54-01992bf7b3d2"}} 
-							resizeMode = {"stretch"}
-							style={styles.image10}
-						/>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/f7d94afa-124b-4104-ad4e-825f45d28576"}} 
-							resizeMode = {"stretch"}
-							style={styles.image2}
-						/>
-					</View>
-					<View style={styles.row8}>
-						<Text style={styles.text8}>
-							{"Home"}
-						</Text>
-						<Text style={styles.text9}>
-							{"  Doctors"}
-						</Text>
-						<Text style={styles.text9}>
-							{"Policies"}
-						</Text>
-						<Text style={styles.text10}>
-							{"Queries"}
-						</Text>
-						<Text style={styles.text10}>
-							{"Profile"}
-						</Text>
-					</View>
-				</View>
+				
 			</ScrollView>
 		</SafeAreaView>
 	)
