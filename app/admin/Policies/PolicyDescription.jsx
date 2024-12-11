@@ -1,9 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { SafeAreaView, View, ScrollView, Text, Image, TouchableOpacity, StyleSheet, } from "react-native";
+import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 export default (props) => {
 	const { id , name , address , phone} = props.route.params;
 	console.log( 'resct', id)
-	
+	const [ data , setData ] = useState(null);
+
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const token = await AsyncStorage.getItem('token');
+                console.log('Token string from storage:', token); // Check if token is stored
+
+                if (!token) {
+                    setError('No token found, please log in.');
+                    setLoading(false);
+                    return;
+                }
+
+                const config = {
+                    headers: {
+                        Authorization: `Token ${token}`, // Use token in the header
+                    },
+                };
+
+				const response = await axios.get(`http://127.0.0.1:8000/admin_app/policies/${id}/` , config);
+				setData(response.data);
+				console.log('Response data:', response.data);
+				console.log("data", data)
+			} catch (error) {
+				console.error('Error fetching data:', error);
+			}
+		}
+
+		fetchData();
+	},[])
+
 	return (
 		<SafeAreaView style={styles.container}>
 			<ScrollView  style={styles.scrollView}>
@@ -18,16 +51,16 @@ export default (props) => {
 						style={styles.image2}
 					/>
 					<Text style={styles.text3}>
-						{"Ayushman Bharat - Pradhan Mantri Jan Arogya Yojana (PMJAY)"}
+					{data?.description || "No description available"}
 					</Text>
 					<Text style={styles.text4}>
-						{"Launch Date: September 23, 2018"}
+						{"Launch Date: "}{data?.start_date || "NA"}
 					</Text>
 					<Text style={styles.text5}>
 						{"Validity: Ongoing"}
 					</Text>
 					<Text style={styles.text6}>
-						{"Description: A flagship health insurance scheme that aims to provide health coverage of up to ₹5 lakh per family per year for secondary and tertiary care hospitalization to over 10 crore poor and vulnerable families."}
+					{data?.description || "No description available"}
 					</Text>
 					<Text style={styles.text7}>
 						{"Target Beneficiaries: Below poverty line (BPL) families, rural and urban poor."}

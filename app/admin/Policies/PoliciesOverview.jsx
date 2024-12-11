@@ -42,21 +42,7 @@ export default (props) => {
 						</Text>
 					</View>
 				</TouchableOpacity>
-				<View style={styles.row4}>
-					<View style={styles.column3}>
-						<Text style={styles.text2}>
-							{"Policies Updated"}
-						</Text>
-						<Text style={styles.text3}>
-							{"Check the latest changes in health policies ->"}
-						</Text>
-					</View>
-					<Image
-						source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/67c1fe31-3263-4450-b880-50baeb706a84"}} 
-						resizeMode = {"stretch"}
-						style={styles.image4}
-					/>
-				</View>
+			
 				
 			</ScrollView>
 		</SafeAreaView>
