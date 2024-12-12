@@ -1,12 +1,47 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SafeAreaView, View, ScrollView, Image, Text, TouchableOpacity, StyleSheet } from "react-native";
+import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default (props) => {
   const [selectedDay, setSelectedDay] = useState(null);
+const { id} = props.route.params;
+const [ data , setData ] = useState(null);
+console.log("index no" , id)
+useEffect(() => {
+	const fetchData = async () => {
+		try {
+			const token = await AsyncStorage.getItem('token');
+			console.log('Token string from storage:', token); // Check if token is stored
 
-  const handleDayClick = (day) => {
+			if (!token) {
+				setError('No token found, please log in.');
+				setLoading(false);
+				return;
+			}
+
+			const config = {
+				headers: {
+					Authorization: `Token ${token}`, // Use token in the header
+				},
+			};
+
+			const response = await axios.get(`http://127.0.0.1:8000/admin_app/doctors/${id}/` , config);
+			setData(response.data);
+			console.log('Response data:', response.data);
+			console.log("data", data)
+		} catch (error) {
+			console.error('Error fetching data:', error);
+			console.error("Error:", error.response?.data || error.message);
+		}
+	}
+
+	fetchData();
+},[])
+const handleDayClick = (day) => {
     setSelectedDay(day === selectedDay ? null : day);  // Toggle selection
   };
+
 
   return (
     <SafeAreaView style={styles.container}>
@@ -33,10 +68,10 @@ export default (props) => {
 					/>
 					<View style={styles.column}>
 						<Text style={styles.text2}>
-							{"Dr. Rishi"}
+							{data?data.name:"name"}
 						</Text>
 						<Text style={styles.text3}>
-							{"Chardiologist"}
+							{data?data.specialization:"specialization"}
 						</Text>
 						<View style={styles.row3}>
 							<Image
@@ -45,7 +80,7 @@ export default (props) => {
 								style={styles.image3}
 							/>
 							<Text style={styles.text4}>
-								{"4.7"}
+								{data?data.gender:"gender"}
 							</Text>
 						</View>
 						<View style={styles.row4}>
@@ -55,7 +90,7 @@ export default (props) => {
 								style={styles.image4}
 							/>
 							<Text style={styles.text5}>
-								{"800m away"}
+								{data?data.years_of_experience:"years"}
 							</Text>
 						</View>
 					</View>
@@ -64,7 +99,7 @@ export default (props) => {
 					{"About"}
 				</Text>
 				<Text style={styles.text7}>
-					{"Lorem ipsum dolor sit amet, consectetur adipi elit, sed do eiusmod tempor incididunt ut laore et dolore magna aliqua. Ut enim ad minim veniam... Read more"}
+					{data?data.hospital:"hospital"}
 				</Text>
 
         <View style={styles.row5}>

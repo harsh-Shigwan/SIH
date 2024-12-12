@@ -159,49 +159,7 @@ export default (props) => {
 						</Text>
 					</TouchableOpacity>
 				</View>
-				<View style={styles.column10}>
-					<View style={styles.row7}>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/d7f570ee-2c53-4a87-b0d4-faae891866d9"}} 
-							resizeMode = {"stretch"}
-							style={styles.image9}
-						/>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/059585a1-20aa-46ca-8b78-7a51f87fd659"}} 
-							resizeMode = {"stretch"}
-							style={styles.image10}
-						/>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/fb837a7d-e8fb-4d8e-8528-6fb756b96940"}} 
-							resizeMode = {"stretch"}
-							style={styles.image11}
-						/>
-						<View style={styles.box4}>
-						</View>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/601527e6-83c8-4d6c-a4c9-b33828720b03"}} 
-							resizeMode = {"stretch"}
-							style={styles.image11}
-						/>
-					</View>
-					<View style={styles.row8}>
-						<Text style={styles.text15}>
-							{"Home"}
-						</Text>
-						<Text style={styles.text16}>
-							{"  Doctors"}
-						</Text>
-						<Text style={styles.text16}>
-							{"Policies"}
-						</Text>
-						<Text style={styles.text17}>
-							{"Queries"}
-						</Text>
-						<Text style={styles.text18}>
-							{"Profile"}
-						</Text>
-					</View>
-				</View>
+				
 			</ScrollView>
 		</SafeAreaView>
 	)

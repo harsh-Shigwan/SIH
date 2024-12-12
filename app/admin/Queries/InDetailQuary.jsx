@@ -1,6 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { SafeAreaView, View, ScrollView, Image, Text, StyleSheet, } from "react-native";
+import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 export default (props) => {
+	const { id} = props.route.params;
+	console.log('react',id);
+	const [ data , setData ] = useState(null);
+	 
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const token = await AsyncStorage.getItem('token');
+                console.log('Token string from storage:', token); // Check if token is stored
+
+                if (!token) {
+                    setError('No token found, please log in.');
+                    setLoading(false);
+                    return;
+                }
+
+                const config = {
+                    headers: {
+                        Authorization: `Token ${token}`, // Use token in the header
+                    },
+                };
+
+				const response = await axios.get(`http://127.0.0.1:8000/admin_app/communication/create/${id}/` , config);
+				setData(response.data);
+				console.log('Response data:', response.data);
+				console.log("data", data)
+			} catch (error) {
+				console.error('Error fetching data:', error);
+				console.error("Error:", error.response?.data || error.message);
+			}
+		}
+
+		fetchData();
+	},[])
 	return (
 		<SafeAreaView style={styles.container}>
 			<ScrollView  style={styles.scrollView}>
@@ -25,12 +61,12 @@ export default (props) => {
 						{"Summary:"}
 					</Text>
 					<Text style={styles.text5}>
-						{"Long Waiting Times: I had an appointment scheduled for 10:00 AM but wasn’t attended to until 12:30 PM. The waiting area was overcrowded and lacked basic amenities like proper seating and water.\nUnhelpful Staff: The reception staff were rude and dismissive when I tried to get information about my appointment delay. Their attitude was indifferent and unprofessional.\nPoor Hygiene Standards: The consultation room was not adequately cleaned. There was visible dirt, and even the equipment seemed poorly maintained, which raised serious concerns about hygiene.\nOvercharging: I was charged for tests that I later found were unnecessary. When I questioned the charges, no one was able to provide a clear explanation.\nI sincerely hope the hospital management takes these issues seriously and makes the necessary improvements. Patients come here with trust and deserve much better treatment."}
+						{data?message:"Message"}
 					</Text>
 					<View style={styles.row2}>
 						<View style={styles.column2}>
 							<Text style={styles.text6}>
-								{"John D."}
+								{data?sender :"no seder" }
 							</Text>
 							<Text style={styles.text7}>
 								{"CareChainAi User"}

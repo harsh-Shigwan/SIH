@@ -1,19 +1,45 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { SafeAreaView, View, ScrollView, Text, Image, StyleSheet, } from "react-native";
+import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 export default (props) => {
+	const { id} =  props.route.params;
+	const [ data , setData ] = useState(null);
+	console.log("id", id);
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const token = await AsyncStorage.getItem('token');
+                console.log('Token string from storage:', token); // Check if token is stored
+
+                if (!token) {
+                    setError('No token found, please log in.');
+                    setLoading(false);
+                    return;
+                }
+
+                const config = {
+                    headers: {
+                        Authorization: `Token ${token}`, // Use token in the header
+                    },
+                };
+
+				const response = await axios.get(`http://127.0.0.1:8000/admin_app/doctors/${id}/` , config);
+				setData(response.data);
+				console.log('Response data:', response.data);
+				console.log("data", data)
+			} catch (error) {
+				console.error('Error fetching data:', error);
+				console.error("Error:", error.response?.data || error.message);
+			}
+		}
+
+		fetchData();
+	},[])
 	return (
 		<SafeAreaView style={styles.container}>
 			<ScrollView  style={styles.scrollView}>
-				<View style={styles.row}>
-					<Text style={styles.text}>
-						{"9:40"}
-					</Text>
-					<Image
-						source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/4711d593-8802-4265-b992-04d36643ad7f"}} 
-						resizeMode = {"stretch"}
-						style={styles.image}
-					/>
-				</View>
+				
 				<View style={styles.row2}>
 					<Image
 						source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/11d959d5-3994-45f5-8ed0-112d6bf9c722"}} 
@@ -32,7 +58,7 @@ export default (props) => {
 					/>
 					<View style={styles.row3}>
 						<Text style={styles.text3}>
-							{"Dr. Vaamana"}
+						{data?.name || "Loading..."}
 						</Text>
 						<Image
 							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/83709a46-cf37-471b-87eb-f56ae3dcdd16"}} 
@@ -44,7 +70,7 @@ export default (props) => {
 						</Text>
 					</View>
 					<Text style={styles.text5}>
-						{"Joined on 13/1/2024"}
+						 {`Joined on ${data?.updated_at || "N/A"}`}
 					</Text>
 					<View style={styles.row4}>
 						<Image
@@ -53,7 +79,7 @@ export default (props) => {
 							style={styles.image5}
 						/>
 						<Text style={styles.text6}>
-							{"Dentist"}
+							{data?.specialization || "N/A"}
 						</Text>
 						<View style={styles.box}>
 						</View>
@@ -63,7 +89,7 @@ export default (props) => {
 							style={styles.image4}
 						/>
 						<Text style={styles.text6}>
-							{"9769340458"}
+						{data?.contact_number || "N/A"}
 						</Text>
 					</View>
 					<View style={styles.row5}>
@@ -73,7 +99,7 @@ export default (props) => {
 							style={styles.image5}
 						/>
 						<Text style={styles.text6}>
-							{"Borivali, Mumbai"}
+						
 						</Text>
 						<View style={styles.box}>
 						</View>
@@ -83,7 +109,7 @@ export default (props) => {
 							style={styles.image5}
 						/>
 						<Text style={styles.text6}>
-							{"Female/40"}
+							{data?.gender || "Gender"}
 						</Text>
 					</View>
 					<View style={styles.row6}>
@@ -93,7 +119,7 @@ export default (props) => {
 							style={styles.image4}
 						/>
 						<Text style={styles.text7}>
-							{"20 Nov 1978"}
+							{data?.years_of_experience || "years"}
 						</Text>
 						<Image
 							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/71e3296b-4441-41dd-8e35-8820dd77ccf6"}} 
@@ -111,53 +137,11 @@ export default (props) => {
 							style={styles.image4}
 						/>
 						<Text style={styles.text8}>
-							{"vaamana32@gmail.com"}
+							{data?.email || "N/A"}
 						</Text>
 					</View>
 				</View>
-				<View style={styles.column2}>
-					<View style={styles.row8}>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/7ffe54e5-5264-4812-a448-2cb09c551f26"}} 
-							resizeMode = {"stretch"}
-							style={styles.image6}
-						/>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/ffc5e169-f508-4f60-9fbc-77fb0fd89e10"}} 
-							resizeMode = {"stretch"}
-							style={styles.image7}
-						/>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/6406f764-7610-4c39-a8ee-78bd73fcdb9f"}} 
-							resizeMode = {"stretch"}
-							style={styles.image8}
-						/>
-						<View style={styles.box}>
-						</View>
-						<Image
-							source = {{uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/de638b39-0641-4e5b-82a9-98c0455bc889"}} 
-							resizeMode = {"stretch"}
-							style={styles.image8}
-						/>
-					</View>
-					<View style={styles.row9}>
-						<Text style={styles.text9}>
-							{"Home"}
-						</Text>
-						<Text style={styles.text10}>
-							{"  Doctors"}
-						</Text>
-						<Text style={styles.text10}>
-							{"Policies"}
-						</Text>
-						<Text style={styles.text11}>
-							{"Queries"}
-						</Text>
-						<Text style={styles.text12}>
-							{"Profile"}
-						</Text>
-					</View>
-				</View>
+			
 			</ScrollView>
 		</SafeAreaView>
 	)

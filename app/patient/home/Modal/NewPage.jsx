@@ -1,40 +1,68 @@
-import React, { useState } from "react";
-import { SafeAreaView, View, ScrollView, Image, Text, TextInput, StyleSheet ,TouchableOpacity } from "react-native";
+import React, { useEffect, useState } from "react";
+import {
+  SafeAreaView,
+  View,
+  ScrollView,
+  Image,
+  Text,
+  TextInput,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
 
-// Dummy data for doctors
-const doctors = [
-  { id:1,
-    name: "Dr. Rishi",
-    specialty: "Cardiologist",
-    rating: 4.7,
-    distance: "800m away",
-    imageUrl: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/46417fdc-bf31-43df-a4ff-d8993a83cee2",
-    ratingImageUrl: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/779a1b34-5d8b-4db5-9bff-378df00ce0a2",
-    distanceImageUrl: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/2d89013a-fb28-40fc-8a72-e2f9509b6fd5"
-  },
-  { id:2,
-    name: "Dr. Arjun",
-    specialty: "Neurologist",
-    rating: 4.8,
-    distance: "1.2km away",
-    imageUrl: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/46417fdc-bf31-43df-a4ff-d8993a83cee2",
-    ratingImageUrl: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/779a1b34-5d8b-4db5-9bff-378df00ce0a2",
-    distanceImageUrl: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/2d89013a-fb28-40fc-8a72-e2f9509b6fd5"
-  },
-  { id:3,
-    name: "Dr. Sima",
-    specialty: "ganelo",
-    rating: 7.8,
-    distance: "1.2km away",
-    imageUrl: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/46417fdc-bf31-43df-a4ff-d8993a83cee2",
-    ratingImageUrl: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/779a1b34-5d8b-4db5-9bff-378df00ce0a2",
-    distanceImageUrl: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/2d89013a-fb28-40fc-8a72-e2f9509b6fd5"
-  },
-  
-];
+import axios from "axios";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export default ( props) => {
+export default (props) => {
   const [textInput1, onChangeTextInput1] = useState("");
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = await AsyncStorage.getItem("token");
+        console.log("Token from storage:", token);
+
+        if (!token) {
+          throw new Error("No token found, please log in.");
+        }
+
+        const config = { headers: { Authorization: `Token ${token}` } };
+        const response = await axios.get(
+          "http://127.0.0.1:8000/admin_app/doctors/",
+          config
+        );
+
+        console.log("Response data:", response.data);
+        setData(response.data);
+      } catch (err) {
+        console.error("Error fetching data:", err.response?.data || err.message);
+        setError(err.message || "Error fetching data");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return (
+      <SafeAreaView style={styles.container}>
+        <Text style={styles.pageTitle}>Loading...</Text>
+      </SafeAreaView>
+    );
+  }
+
+  if (error) {
+    return (
+      <SafeAreaView style={styles.container}>
+        <Text style={styles.pageTitle}>Error: {error}</Text>
+      </SafeAreaView>
+    );
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -42,7 +70,9 @@ export default ( props) => {
         <View style={styles.row}>
           <View style={styles.view}>
             <Image
-              source={{ uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/c67e6728-e6f8-42a0-84db-8838266671ad" }}
+              source={{
+                uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/c67e6728-e6f8-42a0-84db-8838266671ad",
+              }}
               resizeMode={"stretch"}
               style={styles.image}
             />
@@ -51,7 +81,9 @@ export default ( props) => {
         </View>
         <View style={styles.row2}>
           <Image
-            source={{ uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/46a825f7-f1c7-4333-860a-8c619c65febc" }}
+            source={{
+              uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/46a825f7-f1c7-4333-860a-8c619c65febc",
+            }}
             resizeMode={"stretch"}
             style={styles.image2}
           />
@@ -64,48 +96,50 @@ export default ( props) => {
         </View>
         <View style={styles.row3}>
           <Image
-            source={{ uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/c1b68017-6d3d-4c70-aadc-d245074136bd" }}
+            source={{
+              uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/c1b68017-6d3d-4c70-aadc-d245074136bd",
+            }}
             resizeMode={"stretch"}
             style={styles.image3}
           />
           <Text style={styles.text2}>{"Filter"}</Text>
         </View>
-        
-        {/* Mapping over doctors */}
-        {doctors.map((doctor, index) => (
-          <TouchableOpacity style={styles.row4} key={index} onPress={()=> props.navigation.navigate("DocPage")} >
-            <Image
-              source={{ uri: doctor.imageUrl }}
-              resizeMode={"stretch"}
-              style={styles.image4}
-            />
+
+        {data?.map((doctor, index) => (
+          <TouchableOpacity
+            style={styles.row4}
+            key={index}
+            onPress={() => props.navigation.navigate("DocPage",{id : doctor.id})}
+          >
+            
             <View style={styles.column}>
               <Text style={styles.text3}>{doctor.name}</Text>
-              <Text style={styles.text4}>{doctor.specialty}</Text>
+              <Text style={styles.text4}>{doctor.specialization}</Text>
               <View style={styles.row5}>
-                <Image
-                  source={{ uri: doctor.ratingImageUrl }}
-                  resizeMode={"stretch"}
-                  style={styles.image5}
-                />
-                <Text style={styles.text5}>{doctor.rating}</Text>
+                
+                <Text style={styles.text5}>{doctor.rating || "N/A"}</Text>
               </View>
               <View style={styles.row6}>
                 <Image
-                  source={{ uri: doctor.distanceImageUrl }}
+                  source={{
+                    uri:
+                      doctor.distanceImageUrl || "https://via.placeholder.com/9",
+                  }}
                   resizeMode={"stretch"}
                   style={styles.image6}
                 />
-                <Text style={styles.text6}>{doctor.distance}</Text>
+                <Text style={styles.text6}>
+                  {doctor.medical_license_number || "Unknown"}
+                </Text>
               </View>
             </View>
           </TouchableOpacity>
         ))}
-
       </ScrollView>
     </SafeAreaView>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {

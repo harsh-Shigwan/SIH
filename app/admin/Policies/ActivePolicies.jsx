@@ -34,8 +34,8 @@ export default (props) => {
             } catch (err) {
                 setError('Error fetching data');
                 setLoading(false);
-                console.error("Error:", err.response?.data || err.message);
-                console.error('Error fetching data:', err);
+				console.error("Error:", error.response?.data || error.message);
+
             }
         };
 

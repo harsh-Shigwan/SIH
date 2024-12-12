@@ -10,6 +10,9 @@ import { NavigationIndependentTree } from '@react-navigation/native'
 import SignUp from './Auth/SignUp'
 import SignIn from './Auth/SignIn'
 import AdminTabNavigation from './admin/AdminTabNavigation'
+import { Stack } from 'expo-router'
+import StaffTabNavigation from './staff/StaffTabNavigation'
+
 const index = () => {
   const stack = createNativeStackNavigator();
   return (
@@ -23,6 +26,8 @@ const index = () => {
         <stack.Screen  name="SignIn" component={SignIn}/>
         <stack.Screen   options={{headerShown: false}} name="AdminTabNavigation" component={AdminTabNavigation}/>
         <stack.Screen   options={{headerShown: false}} name="Home3" component={Home3}/>
+        <stack.Screen options={{headerShown: false}} name="StaffTabNavigation" component={StaffTabNavigation}/>
+
       
       </stack.Navigator>
     </NavigationContainer>

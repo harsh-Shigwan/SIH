@@ -5,13 +5,13 @@ export default (props) => {
 	return (
 		<SafeAreaView style={styles.container}>
 			<ScrollView  style={styles.scrollView}>
-				
+				<TouchableOpacity onPress={()=> props.navigation.navigate("AddNewPolicy")}>
 				<TextInput
 					placeholder={"Programs & Policies Overview"}
 					value={textInput1}
 					onChangeText={onChangeTextInput1}
 					style={styles.input}
-				/>
+				/></TouchableOpacity>
 				<TouchableOpacity  onPress={()=> props.navigation.navigate("ActivePolicies")} style={styles.row2}>
 					<View style={styles.column}>
 						<Text style={styles.text2}>

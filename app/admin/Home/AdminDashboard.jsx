@@ -78,14 +78,14 @@ export default (props) => {
 							/>
 						</View>
 					</View>
-					<View style={styles.column4}>
+					<TouchableOpacity onPress={()=> props.navigation.navigate("DoctorsList")} style={styles.column4}>
 						<Text style={styles.text5}>
 							{"Registered Doctors"}
 						</Text>
 						<Text style={styles.text6}>
 							{"View Details ->"}
 						</Text>
-					</View>
+					</TouchableOpacity>
 				</View>
 				<Text style={styles.text7}>
 					{"Performance Overview\n"}

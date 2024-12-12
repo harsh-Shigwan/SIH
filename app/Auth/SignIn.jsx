@@ -19,7 +19,9 @@ export default (props) => {
 		props.navigation.navigate("Home3"); 
 	  } else if (response.data.user.role === 'admin') {
 		props.navigation.navigate("AdminTabNavigation"); 
-	  } else {
+	  } else if(response.data.user.role === 'hospital'){
+		props.navigation.navigate("StaffTabNavigation");
+	  } else{
 		Alert.alert("Error", "Unknown role detected.");
 	  }
   
