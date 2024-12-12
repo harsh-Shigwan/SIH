@@ -12,7 +12,8 @@ import SignIn from './Auth/SignIn'
 import AdminTabNavigation from './admin/AdminTabNavigation'
 import { Stack } from 'expo-router'
 import StaffTabNavigation from './staff/StaffTabNavigation'
-
+import HospitalLogin from './Auth/HospitalLogin'
+import Hos from './Auth/Hos'
 const index = () => {
   const stack = createNativeStackNavigator();
   return (
@@ -24,6 +25,8 @@ const index = () => {
         <stack.Screen  options={{headerShown: false}}  name="LoginSignUp" component={LoginSignUp} />
         <stack.Screen  name="SignUp" component={SignUp}/>
         <stack.Screen  name="SignIn" component={SignIn}/>
+      <stack.Screen name="Hos" component={Hos}/>
+       
         <stack.Screen   options={{headerShown: false}} name="AdminTabNavigation" component={AdminTabNavigation}/>
         <stack.Screen   options={{headerShown: false}} name="Home3" component={Home3}/>
         <stack.Screen options={{headerShown: false}} name="StaffTabNavigation" component={StaffTabNavigation}/>

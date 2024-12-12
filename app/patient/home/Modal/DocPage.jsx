@@ -173,21 +173,7 @@ const handleDayClick = (day) => {
 					</TouchableOpacity>
 				</View>
 				<View style={styles.row6}>
-					<TouchableOpacity style={styles.button} onPress={()=>alert('Pressed!')}>
-						<Text style={styles.text13}>
-							{"01:00 PM"}
-						</Text>
-					</TouchableOpacity>
-					<TouchableOpacity style={styles.button2} onPress={()=>alert('Pressed!')}>
-						<Text style={styles.text14}>
-							{"02:00 PM"}
-						</Text>
-					</TouchableOpacity>
-					<TouchableOpacity style={styles.button} onPress={()=>alert('Pressed!')}>
-						<Text style={styles.text5}>
-							{"03:00 PM"}
-						</Text>
-					</TouchableOpacity>
+				
 				</View>
 				<View style={styles.row7}>
 					<TouchableOpacity style={styles.button} onPress={()=>alert('Pressed!')}>

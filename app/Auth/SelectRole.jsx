@@ -1,6 +1,13 @@
 import React from "react";
-import { SafeAreaView, View, ScrollView, Text, TouchableOpacity, StyleSheet } from "react-native";
-import Svg, { Defs, LinearGradient, Stop, Rect } from 'react-native-svg';
+import {
+  SafeAreaView,
+  View,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+} from "react-native";
+import Svg, { Defs, LinearGradient, Stop, Rect } from "react-native-svg";
 
 export default (props) => {
   return (
@@ -28,22 +35,22 @@ export default (props) => {
             <Rect x="0" y="0" width="100%" height="100%" fill="url(#grad2)" />
           </Svg>
 
-          <Text style={styles.text}>
-            {"CareChainAi"}
-          </Text>
+          <Text style={styles.text}>{"CareChainAi"}</Text>
         </View>
 
-        <Text style={styles.text2}>
-          {"Let’s get started!"}
-        </Text>
-        <Text style={styles.text3}>
-          {"Login to Stay healthy and fit"}
-        </Text>
+        <Text style={styles.text2}>{"Let’s get started!"}</Text>
+        <Text style={styles.text3}>{"Login to Stay healthy and fit"}</Text>
 
-        <TouchableOpacity style={styles.button} onPress={() => alert('Pressed!')}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => alert("Pressed!")}
+        >
           <Text style={styles.text4}>{"Login"}</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button2} onPress={() => alert('Pressed!')}>
+        <TouchableOpacity
+          style={styles.button2}
+          onPress={() => alert("Pressed!")}
+        >
           <Text style={styles.text5}>{"Sign Up"}</Text>
         </TouchableOpacity>
       </ScrollView>

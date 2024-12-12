@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 import { SafeAreaView, View, ScrollView, Text, Image, TextInput, TouchableOpacity, StyleSheet, } from "react-native";
 export default (props) => {
-	const [textInput1, onChangeTextInput1] = useState('');
-	const [textInput2, onChangeTextInput2] = useState('');
-	const [textInput3, onChangeTextInput3] = useState('');
-	const [textInput4, onChangeTextInput4] = useState('');
-	const [textInput5, onChangeTextInput5] = useState('');
+  const [insuranceProvider, setInsuranceProvider] = useState('');
+  const [insuranceNumber, setInsuranceNumber] = useState('');
+  const [cardNumber, setCardNumber] = useState('');
+  const [facilityCode, setFacilityCode] = useState('');
+  const [insuranceName, setInsuranceName] = useState('');
 	return (
 		<SafeAreaView style={styles.container}>
 			<ScrollView  style={styles.scrollView}>

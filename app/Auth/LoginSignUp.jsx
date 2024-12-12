@@ -1,54 +1,69 @@
 import React from "react";
-import { SafeAreaView, View, ScrollView, Text, TouchableOpacity, StyleSheet } from "react-native";
-import Svg, { Defs, LinearGradient, Stop, Rect } from 'react-native-svg';
+import {
+  SafeAreaView,
+  View,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+} from "react-native";
+import Svg, { Defs, LinearGradient, Stop, Rect } from "react-native-svg";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 export default (props) => {
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.scrollView}>
-        {/* Gradient Background using SVG */}
-        <Svg height="100%" width="100%" style={styles.gradient}>
-          <Defs>
-            <LinearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
-              <Stop offset="0%" stopColor="#E6E9EF" stopOpacity="1" />
-              <Stop offset="100%" stopColor="#EEF0F5" stopOpacity="1" />
-            </LinearGradient>
-          </Defs>
-          <Rect x="0" y="0" width="100%" height="100%" fill="url(#grad1)" />
-        </Svg>
-
-        <View style={styles.view}>
-          <Svg height="100%" width="100%" style={styles.innerGradient}>
+    <View>
+      <SafeAreaView style={styles.container}>
+        <ScrollView style={styles.scrollView}>
+          {/* Gradient Background using SVG */}
+          <Svg height="100%" width="100%" style={styles.gradient}>
             <Defs>
-              <LinearGradient id="grad2" x1="0%" y1="0%" x2="0%" y2="100%">
-                <Stop offset="0%" stopColor="#D7E2FF" stopOpacity="1" />
-                <Stop offset="100%" stopColor="#F1F2F7" stopOpacity="1" />
+              <LinearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
+                <Stop offset="0%" stopColor="#E6E9EF" stopOpacity="1" />
+                <Stop offset="100%" stopColor="#EEF0F5" stopOpacity="1" />
               </LinearGradient>
             </Defs>
-            <Rect x="0" y="0" width="100%" height="100%" fill="url(#grad2)" />
+            <Rect x="0" y="0" width="100%" height="100%" fill="url(#grad1)" />
           </Svg>
 
-          <Text style={styles.text}>
-            {"CareChainAi"}
-          </Text>
-        </View>
+          <View style={styles.view}>
+            <Svg height="100%" width="100%" style={styles.innerGradient}>
+              <Defs>
+                <LinearGradient id="grad2" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <Stop offset="0%" stopColor="#D7E2FF" stopOpacity="1" />
+                  <Stop offset="100%" stopColor="#F1F2F7" stopOpacity="1" />
+                </LinearGradient>
+              </Defs>
+              <Rect x="0" y="0" width="100%" height="100%" fill="url(#grad2)" />
+            </Svg>
 
-        <Text style={styles.text2}>
-          {"Let’s get started!"}
-        </Text>
-        <Text style={styles.text3}>
-          {"Login to Stay healthy and fit"}
-        </Text>
+            <Text style={styles.text}>{"CareChainAi"}</Text>
+          </View>
 
-        <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate("SignIn")}>
-          <Text style={styles.text4}>{"Login"}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button2} onPress={() => props.navigation.navigate("SignUp")}>
-          <Text style={styles.text5}>{"Sign Up"}</Text>
-        </TouchableOpacity>
-      </ScrollView>
-    </SafeAreaView>
+          <Text style={styles.text2}>{"Let’s get started!"}</Text>
+          <Text style={styles.text3}>{"Login to Stay healthy and fit"}</Text>
+
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => props.navigation.navigate("SignIn")}
+          >
+            <Text style={styles.text4}>{"Login"}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.button2}
+            onPress={() => props.navigation.navigate("SignUp")}
+          >
+            <Text style={styles.text5}>{"Sign Up"}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.button2}
+            onPress={() => props.navigation.navigate("Hos")}
+          >
+            <Text style={styles.text5}>{" Hospital Up"}</Text>
+          </TouchableOpacity>
+        </ScrollView>
+      </SafeAreaView>
+    </View>
   );
 };
 

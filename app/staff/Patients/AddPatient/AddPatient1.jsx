@@ -177,7 +177,7 @@ export default (props) => {
   const [allergy, setAllergy] = useState("");
   const [city, setCity] = useState("");
   const [pincode, setPincode] = useState("");
-
+  
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
